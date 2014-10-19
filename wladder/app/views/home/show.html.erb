@@ -1,0 +1,67 @@
+<style>
+div {
+    background-color: white;
+    width: 355px;
+    padding: 25px;
+    border: 25px solid navy;
+    margin: 25px;
+}
+</style>
+
+<style>
+body {
+    background-image: url("http://i.imgur.com/kLrAW0x.jpg");
+    background-color: #cccccc;
+}
+</style>
+
+<div>
+<a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
+<br>
+<a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/wladder/">Play Again</a>
+
+
+
+
+<br>
+<br>
+<h3>Your Guesses</h3>
+
+<table border="1" cellpadding="3" text-align:"right">
+<% for i in 0..@actual_guesses.length-1 %> 
+
+   <tr>
+   <% if @actual_guesses[i] == @start_word %>
+       <td><%="Start:"%></td>
+       <td><%=@start_word%></td>           
+   <% end %>
+   </tr>
+
+
+   <tr>
+   <% if @actual_guesses[i] && @actual_guesses[i] != @start_word && @actual_guesses[i] != @end_word %>
+     <td><%="Step #{i}:"%></td>
+     <td><%=@actual_guesses[i]%></td>
+   <% end %>
+   </tr>
+
+
+   <tr>
+   <% if @actual_guesses[i] == @end_word %>
+     <td><%="End:"%></td>
+     <td><%=@end_word%></td>
+   <% end %>
+   </tr>
+
+<% end %>
+
+</table>
+<br>
+
+<% if legal @actual_guesses %>
+  <h3><%="You WIN!\n"%></h3>
+<% else %>
+  <h3><%="Incorrect. You Lose!\n"%></h3>
+<% end %>
+</div>
+
