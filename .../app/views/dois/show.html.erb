@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<br>
+<p>
+  <strong>Name:</strong>
+  <%= @doi.name%>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @doi.description %>
+</p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @doi.key %>
+</p>
+<br>
+<br>
+
+<!-- this table use to be in app/views/ratings/index.html.erb -->
+<table>
+  <thead>
+      <tr>
+        <th>URLs and History</th>
+        <th>Time Stamp</th>
+        <th colspan="2">Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @doi.urls.each do |url| %>
+      <% if !url.new_record? %>
+      <tr>
+        <td><%= url.url %></td>
+        <td><%= url.created_at %></td>
+        <td><%= link_to 'Edit', edit_url_path(url) %></td>
+        <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+       <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br>
+<h3>Create New URL</h3>
+<%= render 'urls/form' %>
+<br>
+<br>
+<%= link_to "Edit #{@doi.name}", edit_doi_path(@doi) %> |
+<%= link_to 'Show all DOIs', dois_path %>
+<br>
+<a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
