@@ -24,7 +24,7 @@ class DoisController < ApplicationController
   # POST /dois
   def create
     @doi = Doi.new(doi_params)
-    @doi.key = Random.new_seed
+    @doi.key = 2 * rand(99999999999999999)
 
     if @doi.save
       redirect_to @doi, notice: 'DOI was successfully created.'

@@ -18,16 +18,18 @@ background-color: #cccccc;
 <h1>DOI Server</h1>
 
 <a href="http://en.wikipedia.org/wiki/Digital_object_identifier">Exactly what is a DOI?</a>
+
+
 <br>
 <br>
 <br>
     <%= label_tag(:query, "Search DOI: ") %>
     <%= text_field_tag(:query) %>
     <%= submit_tag("Lookup") %>
+    <p style="color:red">  LOOKUP UNDER CONSTRUCTION</p>
 
-<br>
-<br>
-<br>
+
+<!--display below for debugging and sanity until lookup is working -->
 
 <table cellpadding="4" border="1">
   <thead>
@@ -39,6 +41,9 @@ background-color: #cccccc;
     </tr>
   </thead>
 
+
+<br>
+<br>
   <tbody>
     <% @dois.each do |doi| %>
       <tr>
@@ -54,8 +59,9 @@ background-color: #cccccc;
 
 <br>
 <br>
+
+
 <%= link_to 'New DOI', new_doi_path %>
 <br>
-
 <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
 </div>

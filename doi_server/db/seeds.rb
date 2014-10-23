@@ -9,15 +9,13 @@
 
 dois = Doi.create(
   [
-    { name: 'Lil B', description: 'Collection of rare Lil B music videos! (ULTRA RARE)', key: '1.97089435465216e+37'},
-    { name: 'Professors', description: 'A list of my current professors.', key: '2.93578137046689e+38'},
-    { name: 'Soft Kitty Videos', description: 'Soft kitty, warm kitty, little ball of fur. Happy kitty, sleepy kitty, Purr Purr Purr!', key: '3.34534675423423e+35'},
-    { name: 'Favorite Webpages', description: 'A list of my frequently visted websites', key: '4.23423425223478e+33'},
-
-
-    { name: 'News', description: 'Reliable news about what is going on in the world today.', key: '5.45464323242342e+38'},
-    { name: 'Social Media', description: 'A number of different social media sites that I participate in.', key: '6.09112438740231e+31'},
-    { name: 'School Stuff', description: 'Things that I use frequently for school.', key: '7.88774236400921e+32'}
+    { name: 'Lil B', description: 'Collection of rare Lil B music videos! (ULTRA RARE)', key: 2 * rand(99999999999999999)},
+    { name: 'Professors', description: 'A list of my current professors.', key: 2 * rand(99999999999999999)},
+    { name: 'Soft Kitty Videos', description: 'Soft kitty, warm kitty, little ball of fur. Happy kitty, sleepy kitty, Purr Purr Purr!', key: 2 * rand(99999999999999999)},
+    { name: 'Favorite Webpages', description: 'A list of my frequently visted websites', key: 2 * rand(99999999999999999)},
+    { name: 'News', description: 'Reliable news about what is going on in the world today.', key: 2 * rand(99999999999999999)},
+    { name: 'Social Media', description: 'A number of different social media sites that I participate in.', key: 2 * rand(99999999999999999)},
+    { name: 'School Stuff', description: 'Things that I use frequently for school.', key: 2 * rand(99999999999999999)}
   ]
 )
 
@@ -37,8 +35,8 @@ urls = Url.create(
     { url: 'www.reddit.com', doi_id: dois[3].id},
     { url: 'www.github.com/lnager', doi_id: dois[3].id},
     { url: 'www.supremenewyork.com/shop', doi_id: dois[3].id},
-    { url: 'www.csuchico.edu/shop', doi_id: dois[3].id},
-    { url: 'www.mail.google.com/shop', doi_id: dois[3].id},
+    { url: 'www.csuchico.edu', doi_id: dois[3].id},
+    { url: 'www.mail.google.com', doi_id: dois[3].id},
     { url: 'www.midnght-usa.com/shop', doi_id: dois[3].id},
     { url: 'www.netflix.com', doi_id: dois[3].id},
 
@@ -58,6 +56,7 @@ urls = Url.create(
     { url: 'www.piazza.com', doi_id: dois[6].id},
     { url: 'www.cisr.cob.csuchico.edu:8443/ExSS/', doi_id: dois[6].id},
     { url: 'www.csuchico.edu/studentcenter', doi_id: dois[6].id},
+    { url: 'www.w3school.com', doi_id: dois[6].id},
     { url: 'www.csuchico.edu/blackboard', doi_id: dois[6].id},
 
     { url: 'www.github.com', doi_id: dois[6].id},
