@@ -17,7 +17,7 @@ dois = Doi.create(
 
     { name: 'News', description: 'Reliable news about what is going on in the world today.', key: '5.45464323242342e+38'},
     { name: 'Social Media', description: 'A number of different social media sites that I participate in.', key: '6.09112438740231e+31'},
-    { name: 'School Stuff', description: 'Things that I use frequently for school.', key: '7.8877423640092e1+32'}
+    { name: 'School Stuff', description: 'Things that I use frequently for school.', key: '7.88774236400921e+32'}
   ]
 )
 
