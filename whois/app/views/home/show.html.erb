@@ -16,10 +16,13 @@ background-color: #cccccc;
 
 
 <div>
+<a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
+<br>
 <%= link_to "Search Page", root_path %>
 <br>
-<a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
-<p><%= "$ whois #{@query_text} returned" %></p>
+
+
+<h2><%= "$ whois #{@query_text} returned" %></h2>
 <br>
 <% @result.each do |line| %>
 <%= line %>
