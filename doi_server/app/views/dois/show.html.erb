@@ -1,3 +1,35 @@
+<style>
+#body {
+background-color: white;
+width: 666px;
+padding: 25px;
+border: 25px solid navy;
+margin: 25px;
+}
+#article {
+background-color:white;
+width: 355px;
+border: 25px solid navy;
+padding: 25px;
+margin: 25px;
+}
+
+th {
+    text-align: left;
+}
+
+</style>
+<style>
+body {
+background-image: url("http://i.imgur.com/kLrAW0x.jpg");
+background-color: grey;
+}
+</style>
+<div>
+
+
+
+<div id="body">
 <p id="notice"><%= notice %></p>
 <h1><%= @doi.name %></h1>
 <p>
@@ -11,15 +43,11 @@
 </p>
 
 
-
-<br>
-<br>
-
 <!-- this table use to be in app/views/ratings/index.html.erb -->
-<table cellpadding="4" border="1">
+<table cellpadding="4" border="1" width=100%>
   <thead>
       <tr>
-        <th>URLS and History</th>
+        <th>URLs and History</th>
         <th>Timestamp</th>
     </tr>
   </thead>
@@ -35,9 +63,15 @@
     <% end %>
   </tbody>
 </table>
+</div>
+
+
+
 
 <br>
 <br>
+
+<div id="article">
 <h3>Create New URL</h3>
 <%= render 'urls/form' %>
 <br>
@@ -46,3 +80,5 @@
 <%= link_to 'Show all DOIs', dois_path %>
 <br>
 <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
+
+</div>

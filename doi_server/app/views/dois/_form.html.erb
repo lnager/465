@@ -20,16 +20,13 @@
     <%= f.text_field :description %>
   </div>
   <br>
-  <%= f.fields_for :urls do |urls_form| %>
-    <!-- <h3>New URL</h3>
-    <div style="margin-left:30px;"> -->
-      <div class="field">
-        <%= urls_form.label :url %><br>
-        <%= urls_form.text_field :url %>
-      </div>
-    <!-- </div> -->
-  <% end %>
 
+  <%= f.fields_for :urls do |urls_form| %>
+   <div class="field">
+      <%= urls_form.label :url %><br>
+      <%= urls_form.text_field :url %>
+   </div>
+  <% end %>
 
   <br>
   <div class="actions">
