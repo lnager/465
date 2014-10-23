@@ -15,7 +15,14 @@ dois = Doi.create(
     { name: 'Favorite Webpages', description: 'A list of my frequently visted websites', key: 2 * rand(99999999999999999)},
     { name: 'News', description: 'Reliable news about what is going on in the world today.', key: 2 * rand(99999999999999999)},
     { name: 'Social Media', description: 'A number of different social media sites that I participate in.', key: 2 * rand(99999999999999999)},
-    { name: 'School Stuff', description: 'Things that I use frequently for school.', key: 2 * rand(99999999999999999)}
+    { name: 'School Stuff', description: 'Things that I use frequently for school.', key: 2 * rand(99999999999999999)},
+
+
+
+    {name: 'Music Sites', description: 'Where I download my new music.', key: 2 * rand(99999999999999999)},
+    {name: 'Online Games', description: 'List of popular online games', key: 2 * rand(99999999999999999)},
+
+
   ]
 )
 
@@ -40,18 +47,14 @@ urls = Url.create(
     { url: 'www.midnght-usa.com/shop', doi_id: dois[3].id},
     { url: 'www.netflix.com', doi_id: dois[3].id},
 
-
-
     { url: 'www.theorion.com', doi_id: dois[4].id},
     { url: 'www.nytimes.com', doi_id: dois[4].id},
     { url: 'www.sacbee.com', doi_id: dois[4].id},
-
 
     { url: 'www.facebook.com', doi_id: dois[5].id},
     { url: 'www.myspace.com', doi_id: dois[5].id},
     { url: 'www.twitter.com', doi_id: dois[5].id},
     { url: 'www.instagram.com', doi_id: dois[5].id},
-
 
     { url: 'www.piazza.com', doi_id: dois[6].id},
     { url: 'www.cisr.cob.csuchico.edu:8443/ExSS/', doi_id: dois[6].id},
@@ -60,6 +63,19 @@ urls = Url.create(
     { url: 'www.csuchico.edu/blackboard', doi_id: dois[6].id},
 
     { url: 'www.github.com', doi_id: dois[6].id},
-    { url: 'www.ruby-doc.org/core-2.1.3', doi_id: dois[6].id}
+    { url: 'www.ruby-doc.org/core-2.1.3', doi_id: dois[6].id},
+  
+    {url: 'www.hotnewhiphop.com', doi_id: dois[7].id},
+    {url: 'www.digitaldripped.com', doi_id: dois[7].id},
+    {url: 'www.datpiff.com', doi_id: dois[7].id},
+    {url: 'www.soundcloud.com', doi_id: dois[7].id},
+
+    {url: 'www.addictinggames.com', doi_id: dois[8].id},
+    {url: 'www.worldofwarcraft.com', doi_id: dois[8].id},
+   
+
+
   ]
+
+
 )
