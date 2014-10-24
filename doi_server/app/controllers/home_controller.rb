@@ -14,7 +14,7 @@ def show
 
 
  if @name_query && @name_query != ""
-   @doi_regex = Doi.find_by(name: @name_query)
+  @doi_regex = Doi.find_by(name: @name_query)
  end
 
 

@@ -58,13 +58,13 @@ background-color: grey;
   </thead>
 
   <tbody>
-    <%= @doi.urls.each do |url| %>
+    <% @doi.urls.each do |url| %>
       <% if !url.new_record? %>
       <tr>
-        <td><a href="<%= url.url %>"><%= url.url %></td>
+        <td><a href="<%=url.url%>"><%=url.url %></a></td>
         <td><%= url.created_at %></td>
-       </tr>
-       <% end %>
+      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
@@ -83,6 +83,4 @@ background-color: grey;
 <br>
 <br>
 <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
-
-
 </div>

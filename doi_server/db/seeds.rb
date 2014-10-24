@@ -20,7 +20,7 @@ dois = Doi.create(
 
 
     {name: 'Music Sites', description: 'Where I download my new music.', key: 2 * rand(99999999999999999)},
-    {name: 'Online Games', description: 'List of popular online games', key: 2 * rand(99999999999999999)},
+    {name: 'Online Games', description: 'List of popular online games', key: 2 * rand(99999999999999999)}
 
 
   ]
@@ -71,7 +71,7 @@ urls = Url.create(
     {url: 'http://www.soundcloud.com', doi_id: dois[7].id},
 
     {url: 'http://www.addictinggames.com', doi_id: dois[8].id},
-    {url: 'http://www.worldofwarcraft.com', doi_id: dois[8].id},
+    {url: 'http://www.worldofwarcraft.com', doi_id: dois[8].id}
    
 
 
