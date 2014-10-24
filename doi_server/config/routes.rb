@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     resources :urls, shallow: true
   end
 
-  root 'dois#index'
-  #get 'query', to 'dois#show'
+  root 'home#index'
+  get 'query', to: 'home#show'
+  get 'name_query', to: 'home#show'
 
 end

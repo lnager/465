@@ -43,42 +43,46 @@ background-color: grey;
 </p>
 
 
-<!-- this table use to be in app/views/ratings/index.html.erb -->
+<p>
+  <strong>Most Recent URL:</strong>
+  <a href="<%= @doi.urls[-2].url %>"><%= @doi.urls[-2].url %></a>
+</p>
+
+
 <table cellpadding="4" border="1" width=100%>
   <thead>
       <tr>
-        <th>URLs and History</th>
+        <th>URL History</th>
         <th>Timestamp</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @doi.urls.each do |url| %>
+    <%= @doi.urls.each do |url| %>
       <% if !url.new_record? %>
       <tr>
-        <td><%= url.url %></td>
+        <td><a href="<%= url.url %>"><%= url.url %></td>
         <td><%= url.created_at %></td>
        </tr>
        <% end %>
     <% end %>
   </tbody>
 </table>
+
 </div>
 
 
 
-
-<br>
-<br>
-
 <div id="article">
 <h3>Create New URL</h3>
 <%= render 'urls/form' %>
-<br>
-<br>
 <%= link_to "Edit #{@doi.name}", edit_doi_path(@doi) %> |
 <%= link_to 'Show all DOIs', dois_path %>
 <br>
+<%= link_to 'Search', root_path %>
+<br>
+<br>
 <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
+
 
 </div>

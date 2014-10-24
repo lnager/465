@@ -1,5 +1,3 @@
-
-
 <%= form_for([@doi, @url]) do |f| %>
   <% if @url.errors.any? %>
     <div id="error_explanation">
@@ -18,6 +16,7 @@
     <%= f.label :url %><br>
     <%= f.text_field :url %>
   </div>
+
   <br>
   <div class="actions">
     <%= f.submit %>

@@ -13,10 +13,6 @@
 
 
 
-  <div class="field">
-    Key:
-    <%= @doi.key %>
-  </div>
 <br>
   <div class="field">
     <%= f.label :name %><br>
@@ -28,12 +24,14 @@
   </div>
   <br>
 
+  <% if @doi.urls.last.new_record? %>
   <%= f.fields_for :urls do |urls_form| %>
    <div class="field">
       <%= urls_form.label :url %><br>
       <%= urls_form.text_field :url %>
    </div>
   <% end %>
+<% end %>
 
   <br>
   <div class="actions">

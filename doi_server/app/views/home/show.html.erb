@@ -14,9 +14,6 @@ background-color: #cccccc;
 }
 </style>
 
-
-
-
 <div>
 <h1>DOI Server</h1>
 
@@ -32,24 +29,25 @@ background-color: #cccccc;
   <br>
   <br>
   <tbody>
-  <% @dois.each do |doi| %>
       <tr>
-        <td><%= doi.name %></td>
-        <td><%= doi.description %></td>
-        <td><%= doi.key %></td>
-        <td><%= link_to 'Show', doi %></td>
+        <td><%= @doi_result.name %></td>
+        <td><%= @doi_result.description %></td>
+        <td><%= @doi_result.key %></td>
+        <td><%= link_to 'Show', @doi_result %></td>
       </tr>
-  <% end %>
   </tbody>
 </table>
 
 
 
-
 <br>
+<br>
+<%= link_to "Edit #{@doi_result.name}", edit_doi_path(@doi_result) %> |
+<%= link_to 'Show all DOIs', dois_path %>
 <br>
 <%= link_to 'Search', root_path %>
 <br>
 <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
 </div>
+
 
