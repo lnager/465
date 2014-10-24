@@ -17,6 +17,9 @@ background-color: #cccccc;
 <div>
 <h1>DOI Server</h1>
 
+
+
+<% if @query %>
 <table cellpadding="4" border="1">
   <thead>
     <tr>
@@ -37,9 +40,6 @@ background-color: #cccccc;
       </tr>
   </tbody>
 </table>
-
-
-
 <br>
 <br>
 <%= link_to "Edit #{@doi_result.name}", edit_doi_path(@doi_result) %> |
@@ -48,6 +48,46 @@ background-color: #cccccc;
 <%= link_to 'Search', root_path %>
 <br>
 <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
+<% end %>
+
+
+
+
+
+
+<% if @name_query %>
+<table cellpadding="4" border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Key</th>
+      <th>Option</th>
+    </tr>
+  </thead>
+  <br>
+  <br>
+  <tbody>
+      <tr>
+        <td><%= @doi_regex.name %></td>
+        <td><%= @doi_regex.description %></td>
+        <td><%= @doi_regex.key %></td>
+        <td><%= link_to 'Show', @doi_regex %></td>
+      </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<%= link_to "Edit #{@doi_regex.name}", edit_doi_path(@doi_regex) %> |
+<%= link_to 'Show all DOIs', dois_path %>
+<br>
+<%= link_to 'Search', root_path %>
+<br>
+<a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
+
+<% end %>
+
+
 </div>
 
 
