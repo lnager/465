@@ -16,9 +16,6 @@ background-color: #cccccc;
 
 <div>
 <h1>DOI Server</h1>
-
-
-
 <% if @query %>
 <table cellpadding="4" border="1">
   <thead>
@@ -48,14 +45,7 @@ background-color: #cccccc;
 <%= link_to 'Search', root_path %>
 <br>
 <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
-<% else %>
-No Such DOI
 <% end %>
-
-
-
-
-
 
 <% if @name_query %>
 <table cellpadding="4" border="1">
@@ -88,7 +78,4 @@ No Such DOI
 <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">Home Page</a>
 
 <% end %>
-
 </div>
-
-

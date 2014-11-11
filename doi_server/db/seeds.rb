@@ -28,28 +28,28 @@ dois = Doi.create(
 
 urls = Url.create(
   [
-    { url: 'http://www.youtube.com/lilb1', doi_id: dois[0].id},
-    { url: 'http://www.youtube.com/blueflame', doi_id: dois[0].id},
-    { url: 'http://www.youtube.com/100gutta', doi_id: dois[0].id},
+    { url: 'https://www.youtube.com/channel/UCtG-LNxN-bVAyeyxGiZzoqQ', doi_id: dois[0].id},
+    { url: 'https://www.youtube.com/watch?v=83p69JhDnwU&list=UUtG-LNxN-bVAyeyxGiZzoqQ', doi_id: dois[0].id},
+    { url: 'https://www.youtube.com/watch?v=yTC8ECjQBp8', doi_id: dois[0].id},
 
     { url: 'http://www.ecst.csuchico.edu/~tyson', doi_id: dois[1].id},
-    { url: 'http://bryancdixon.com/Fall2014/CSCI340', doi_id: dois[1].id},
+    { url: 'http://www.bryancdixon.com/Fall2014/CSCI340', doi_id: dois[1].id},
 
-    { url: 'http://www.youtube.com/3213jnjkaw', doi_id: dois[2].id},
-    { url: 'http://www.bigbangtheory.com/softkittysong', doi_id: dois[2].id},
-    { url: 'http://www.metacafe.com/67sfd76', doi_id: dois[2].id},
+    { url: 'https://www.youtube.com/watch?v=sIp77PUvLTE', doi_id: dois[2].id},
+    { url: 'http://www.cbs.com/shows/big_bang_theory/', doi_id: dois[2].id},
+    { url: 'http://www.lyricsfreak.com/t/the+big+bang+theory/soft+kitty_21002365.html', doi_id: dois[2].id},
 
     { url: 'http://www.reddit.com', doi_id: dois[3].id},
-    { url: 'http://www.github.com/lnager', doi_id: dois[3].id},
-    { url: 'http://www.supremenewyork.com/shop', doi_id: dois[3].id},
-    { url: 'http://www.csuchico.edu', doi_id: dois[3].id},
+    { url: 'https://github.com/lnager/', doi_id: dois[3].id},
+    { url: 'http://www.supremenewyork.com/', doi_id: dois[3].id},
+    { url: 'http://www.csuchico.edu/', doi_id: dois[3].id},
     { url: 'http://www.mail.google.com', doi_id: dois[3].id},
     { url: 'http://www.midnght-usa.com/shop', doi_id: dois[3].id},
     { url: 'https://www.netflix.com', doi_id: dois[3].id},
 
     { url: 'http://www.theorion.com', doi_id: dois[4].id},
     { url: 'http://www.nytimes.com', doi_id: dois[4].id},
-    { url: 'http://www.sacbee.com', doi_id: dois[4].id},
+    { url: 'http://www.sacbee.com/', doi_id: dois[4].id},
 
     { url: 'http://www.facebook.com', doi_id: dois[5].id},
     { url: 'http://www.myspace.com', doi_id: dois[5].id},
@@ -57,7 +57,6 @@ urls = Url.create(
     { url: 'http://www.instagram.com', doi_id: dois[5].id},
 
     { url: 'http://www.piazza.com', doi_id: dois[6].id},
-    { url: 'http://www.cisr.cob.csuchico.edu:8443/ExSS/', doi_id: dois[6].id},
     { url: 'http://www.csuchico.edu/studentcenter', doi_id: dois[6].id},
     { url: 'http://www.w3school.com', doi_id: dois[6].id},
     { url: 'http://www.csuchico.edu/blackboard', doi_id: dois[6].id},

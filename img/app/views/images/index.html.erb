@@ -1,0 +1,17 @@
+<h1>Social Image Network</h1>
+app/views/images/index.html.erb
+
+<br>
+<h2>Listing Images</h2>
+
+<% if current_user == nil %>
+<p>Dislaying public images only - please sign-up or log in. </p>
+
+<!-- image_tag root_url + "/images/" + @image.filename, size: "100x100", alt: @image.filename -->
+
+
+<% else %>
+<p>Displaying all public and accessible private photos</p>
+<%= render 'form' %>
+<% end %>
+

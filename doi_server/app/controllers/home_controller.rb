@@ -14,7 +14,8 @@ def show
 
 
  if @name_query && @name_query != ""
-  @doi_regex = Doi.find_by(name: @name_query)
+    #@dois_by_name = Doi.all.push { |doi| doi if /#{@query_name}/ =~ doi.name }.compact
+    @doi_regex = Doi.find_by(name: @name_query) 
  end
 
 
