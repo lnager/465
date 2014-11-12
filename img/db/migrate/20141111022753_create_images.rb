@@ -4,7 +4,6 @@ class CreateImages < ActiveRecord::Migration
       t.string :filename
       t.string :flag
       t.integer :user_id
-      t.references :tag, index: true
       t.references :user, index: true
 
       t.timestamps

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111023546) do
+ActiveRecord::Schema.define(version: 20141111054017) do
 
   create_table "accessors", force: true do |t|
     t.integer  "user_id"
@@ -27,12 +27,10 @@ ActiveRecord::Schema.define(version: 20141111023546) do
     t.string   "filename"
     t.string   "flag"
     t.integer  "user_id"
-    t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "images", ["tag_id"], name: "index_images_on_tag_id"
   add_index "images", ["user_id"], name: "index_images_on_user_id"
 
   create_table "tags", force: true do |t|
@@ -41,6 +39,8 @@ ActiveRecord::Schema.define(version: 20141111023546) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "tags", ["image_id"], name: "index_tags_on_image_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

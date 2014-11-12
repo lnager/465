@@ -1,7 +1,7 @@
 <%= form_for(@image) do |f| %>
   <% if @image.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@image.errors.count, "error") %> prohibited this professor from being saved:</h2>
+      <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
 
       <ul>
       <% @image.errors.full_messages.each do |message| %>
@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :uploaded_file %><br>
+    <%= f.file_field :uploaded_file %>
+  </div>
+  <div class="field">
     <%= f.label :filename %><br>
     <%= f.text_field :filename %>
   </div>
@@ -19,36 +23,12 @@
     <%= f.label :flag %><br>
     <%= f.text_field :flag %>
   </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
 <br>
-
-
-
-  <% if @image.tags.last.new_record? %>
-    <%= f.fields_for :tags do |tags_form| %>
-      <h3>New Tag</h3>
-      <div style="margin-left:30px;">
-        <div class="field">
-          <%= tags_form.label :tag %><br>
-          <%= tags_form.text_field :tag %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-  <br>
-
   <div class="actions">
     <%= f.submit %>
   </div>
-
-
-
-
-
-
-
 <% end %>
-
-
-
-
-

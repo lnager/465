@@ -1,17 +1,42 @@
+
 <h1>Social Image Network</h1>
 app/views/images/index.html.erb
-
+<br>
 <br>
 <h2>Listing Images</h2>
 
-<% if current_user == nil %>
+<% if current_user == nil %>  <!-- && if @image.flag == 'public' -->
 <p>Dislaying public images only - please sign-up or log in. </p>
 
 <!-- image_tag root_url + "/images/" + @image.filename, size: "100x100", alt: @image.filename -->
+<table cellpadding="4" border ="1">
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th>Flag</th>
+      <th>User_ID</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
 
+  <tbody>
+  <% @images.each do |image| %>
+    <tr>
+      <% if image.flag == "public" && !current_user %>
+      <td><%= image.filename %></td>
+      <td><%= image.flag %></td>
+      <td><%= image.user_id %></td>
+      <td><%= link_to 'Show', image %></td>
+      <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
 
+</table>
 <% else %>
 <p>Displaying all public and accessible private photos</p>
-<%= render 'form' %>
+
+
 <% end %>
 

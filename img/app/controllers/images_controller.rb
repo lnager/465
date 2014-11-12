@@ -2,17 +2,19 @@ class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
   def index
-    #@images = Image.all
+    @images = Image.all
     #respond_with(@images)
   end
 
   def show
     #respond_with(@image)
+    @tag = @image.tags.new
   end
 
   def new
-    #@image = Image.new
+    @image = Image.new
     #respond_with(@image)
+    @image.tags.new
   end
 
   def edit
@@ -42,11 +44,17 @@ class ImagesController < ApplicationController
   def update
     #@image.update(image_params)
     #respond_with(@image)
+   if @image.update(image_params)
+      redirect_to @image, notice: 'Image was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
-    #@image.destroy
+    @image.destroy
     #respond_with(@image)
+    redirect_to images_url
   end
 
   private
@@ -55,6 +63,6 @@ class ImagesController < ApplicationController
     end
 
     def image_params
-      params.require(:image).permit(:filename, :flag, :user_id)
+      params.require(:image).permit(:filename, :flag, :user_id, tags_attributes: [:tag, :image_id])
     end
 end
