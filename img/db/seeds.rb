@@ -23,7 +23,7 @@
 
 
     images = Image.create(
-      [
+    [
 
         {filename: 'w8t6i9il4yvrdkl.jpg', flag: '0', user_id: users[0].id},
         {filename: '6388itm9ecspgr10.jpg', flag: '1', user_id: users[0].id},
@@ -47,12 +47,12 @@
         {filename: '7ud9fwrlhaxs6fag.jpg', flag: '0', user_id: users[3].id},
         {filename: 'mei5dmcfu1s5k7th.jpg', flag: '0', user_id: users[3].id}
   
-      ]
-    )
+    ]
+)
 
 
     tags = Tag.create(
-      [
+    [
         {tag:'first tag', image_id: images[0].id},
         {tag:'second tag', image_id: images[0].id},
         {tag:'not appropriate, Lucas', image_id: images[1].id},
@@ -78,5 +78,17 @@
 
         {tag:'I C U', image_id: images[11].id},
         {tag:'Billy Mays shits on this dude.', image_id: images[12].id}
-      ]
-    )
+    ]
+)
+
+
+
+  accessors = Accessor.create(
+  [
+
+    {user_id: users[0].id, image_id: images[9].id },
+    {user_id: users[1].id, image_id: images[9].id },
+    {user_id: users[2].id, image_id: images[9].id },
+    {user_id: users[3].id, image_id: images[1].id }
+  ]
+)

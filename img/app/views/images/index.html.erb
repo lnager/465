@@ -1,74 +1,75 @@
-
 <h1>Social Image Network</h1>
-#app/views/images/index.html.erb
-<h2>Listing Images</h2>
 
-<% if current_user == nil %>  
-<p>Dislaying public images only - please sign-up or log in. </p>
-<table cellpadding="4" border ="1">
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Filename</th>
-      <th>Flag</th>
-      <th>User_ID</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-  <% @images.each do |image| %>
-    <tr>
-      <% if image.flag == "0" #public %>
-      <td><%= image_tag root_url + "/images/" + image.filename, size: "100x100", alt: image.filename %></td>
-      <td><%= image.filename %></td>
-      <td><%= image.flag %></td>
-      <td><%= image.user_id %></td>
-      <td><%= link_to 'Show', image %></td>
-      <!-- link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td -->
+<% if current_user == nil %>  <!-- public view -->
+<p>Listing public photos only, please log in or sign up.</p>
+<br>
+
+  <h2>Public Images</h2>
+  <table cellpadding="4" border ="1">
+    <tbody>
+      <tr>
+      <% @images.each do |image| %>
+        <% if image.flag == "0" %>
+        <td><a href="<%= image_path(image) %>"><%= image_tag image.filename, size: "200x200", alt: image.filename%></a></td>
+        <% end %>
       <% end %>
-    </tr>
-  <% end %>
-  </tbody>
-
-</table>
+      </tr>
+    </tbody>
+  </table>
 
 
 
+<% else %> <!-- Logged in view -->
+<p>Displaying all public, owned, and accessible photos</p>
 
-<% else %>
-<p>NOT IMPLEMENTED: Display all public and accessible private photos</p>
-<p>Does show public and owned (private & public) photos</p>
-<table cellpadding="4" border ="1">
-  <thead>
-    <tr>
-      <th>Filename</th>
-      <th>Flag</th>
-      <th>User_ID</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% @images.each do |image| %>
-    <tr>
-      <% if image.flag == '0' || image.user_id == current_user.id #public and owned (which includes private) images %>
-      <td><%= image.filename %></td>
-      <td><%= image.flag %></td>
-      <td><%= image.user_id %></td>
-      <td><%= link_to 'Show', image %></td>
-      <!--%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td -->
+  <h2>Public Images</h2>
+  <table cellpadding="4" border ="1">
+    <tbody>
+      <tr>
+      <% @images.each do |image| %>
+        <% if image.flag == "0" %>
+          <td><a href="<%= image_path(image) %>"><%= image_tag image.filename, size: "200x200", alt: image.filename%></a></td>
+        <% end %>
       <% end %>
+      </tr>
+    </tbody>
+  </table>
+
+<!--
+  <h2>Accessible Images</h2>
+  <table cellpadding="4" border ="1">
+    <tbody>
+      <tr>
+      <!--% @images.each do |image| %-->
+      <!-- for i in 0..@users.length-1 %--> 
+        <!--% if current_user.id == image.accessors[i].id %-->
+        <td><a href="<!--%= image_path(image) %-->"><!--%= image_tag image.filename, size: "200x200", alt: image.filename%--></a></td>
+        <!--% end %-->
+      <!--% end %-->
+      <!--% end %-->
+      </tr>
+    </tbody>
+  </table>
+-->
+
+  <h2>My Images</h2>
+  <table cellpadding="4" border ="1">
+  <tbody>
+    <tr>
+    <% @images.each do |image| %>
+    <% if image.user_id == current_user.id %>
+      <td><a href="<%= image_path(image) %>"><%= image_tag image.filename, size: "200x200", alt: image.filename%></a></td>
+    <% end %>
+    <% end %>
     </tr>
-  <% end %>
   </tbody>
+  </table>
 
-</table>
-
-
-
-
-<!-- upload_photo -->
 
 <% end %>
+<br>
+<br>
+<br>
+<a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
 

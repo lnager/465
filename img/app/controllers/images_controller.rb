@@ -3,18 +3,16 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all
-    #respond_with(@images)
+    @user = User.all
   end
 
   def show
-    #respond_with(@image)
     @tag = @image.tags.new
     @users = User.all
   end
 
   def new
     @image = Image.new
-    #respond_with(@image)
     @image.tags.new
   end
 
@@ -43,8 +41,6 @@ class ImagesController < ApplicationController
   end
 
   def update
-    #@image.update(image_params)
-    #respond_with(@image)
    if @image.update(image_params)
       redirect_to @image, notice: 'Image was successfully updated.'
     else
@@ -54,7 +50,6 @@ class ImagesController < ApplicationController
 
   def destroy
     @image.destroy
-    #respond_with(@image)
     redirect_to images_url
   end
 

@@ -11,12 +11,14 @@
     </div>
   <% end %>
 
-
-  <div class="field", class="actions">
-    | <%= f.label :flag, "Public"%><%= f.radio_button :flag, "0" %> |
-    <%= f.label :flag, "Private" %><%= f.radio_button :flag, "1" %> |
-    <%= f.submit "Update Flag" %>
+  <div class="field", class="action">
+    <%= f.label :uploaded_file %><br>
+    <%= f.file_field :uploaded_file %>
+    <%= f.submit %>
   </div>
+
+
+
 
 
 

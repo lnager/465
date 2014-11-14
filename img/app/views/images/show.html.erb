@@ -1,31 +1,29 @@
 
 <% if !current_user %>
+  <h1><%= image_tag root_url + "/images/" + @image.filename, size: "400x400", alt: @image.filename %></h1>
+  
+  
+  <h2>Filename: <%= @image.filename %></h2>
+  <p>Image Owner: <%= @users[@image.user_id-1].name %><br>Owner Email: <%= @users[@image.user_id-1].email %></p>
 
-<h1><%= image_tag root_url + "/images/" + @image.filename, size: "100x100", alt: @image.filename %></h1>
-
-<p>Image Owner: <%= @users[@image.user_id-1].name %><br>Owner Email: <%= @users[@image.user_id-1].email %></p>
-<br>
-<h3><%= @image.filename %>'s Tags </h3>
-<!-- this table use to be in app/views/tags/index.html.erb -->
-<table border=1>
-  <thead>
+  <br>  
+  <h3><%= @image.filename %>'s Tags </h3>
+  <table cellpadding="5" border=1>
+    <thead>
       <tr>
         <th>Tags</th>
-        <th>Image_ID</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @image.tags.each do |tag| %>
-      <% if !tag.new_record? %>
-      <tr>
-        <td><%= tag.tag %></td>
-        <td><%= tag.image_id %></td>
       </tr>
+    </thead>
+    <tbody>
+      <% @image.tags.each do |tag| %>
+        <% if !tag.new_record? %>
+        <tr>
+          <td><%= tag.tag %></td>
+        </tr>
+        <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
 <% end %>
 
@@ -35,56 +33,55 @@
 
 <% if current_user %>
 
-<%= image_tag root_url + "/images/" + @image.filename, size: "100x100", alt: @image.filename %>
-<p>Image Owner: <%= @users[@image.user_id-1].name %><br>Owner Email: <%= @users[@image.user_id-1].email %></p>
-<br>
-  <% if @image.user_id == current_user.id %>
+  <%= image_tag root_url + "/images/" + @image.filename, size: "400x400", alt: @image.filename %>
+  
+  <h2>Filename: <%= @image.filename %></h2>
+  <p>Image Owner: <%= @users[@image.user_id-1].name %><br>Owner Email: <%= @users[@image.user_id-1].email %></p>
   <br>
-   <%= render 'form' %>
+
+  <% if @image.user_id == current_user.id %>
+  <%= render 'form' %><br>
+  <% end %>
+
+  <% if @image.flag == "1" %>
+  <p>Edit photo accessors, here</p>
+  <br>
   <br>
   <% end %>
 
-
-<h3><%= @image.filename %>'s Tags </h3>
-<!-- this table use to be in app/views/tags/index.html.erb -->
-<table border=1>
-  <thead>
+  <h3><%= @image.filename %>'s Tags </h3>
+  <table cellpadding="5" border=1>
+    <thead>
       <tr>
         <th>Tags</th>
-        <th>Image_ID</th>
-
         <% if @image.user_id == current_user.id %>
         <th colspan="2">Owner's Options</th>
         <% end %>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @image.tags.each do |tag| %>
-      <% if !tag.new_record? %>
-      <tr>
-
-        <td><%= tag.tag %></td>
-        <td><%= tag.image_id %></td>
-
-        <% if @image.user_id == current_user.id %>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-
       </tr>
+    </thead>
+    <tbody>
+      <% @image.tags.each do |tag| %>
+        <% if !tag.new_record? %>
+        <tr>
+          <td><%= tag.tag %></td>
+          <% if @image.user_id == current_user.id %>
+          <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+          <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+        <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-
+  <br>
   <% if @image.user_id == current_user.id %>
   <h3>Create New Tag</h3>
   <%= render 'tags/form' %>
   <% end %>
 
+
+
 <% end %>
 <br>
-<%= link_to 'Back to Images', images_path %>
+<%= link_to 'Back to Images', images_path %> | <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
