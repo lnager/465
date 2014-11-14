@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-devise_for :users
-resources :images do
+  devise_for :users
+
+  resources :images do
     resources :tags, shallow: true
   end
 

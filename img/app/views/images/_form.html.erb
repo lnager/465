@@ -12,30 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :filename %><br>
-    <%= f.text_field :filename %>
-  </div>
-  <div class="field">
     <%= f.label :flag %><br>
     <%= f.text_field :flag %>
   </div>
-<br>
-
-
-
-  <% if @image.tags.last.new_record? %>
-    <%= f.fields_for :tags do |tags_form| %>
-      <h3>New Tag</h3>
-      <div style="margin-left:30px;">
-        <div class="field">
-          <%= tags_form.label :tag %><br>
-          <%= tags_form.text_field :tag %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-  <br>
-
   <div class="actions">
     <%= f.submit %>
   </div>
@@ -47,8 +26,4 @@
 
 
 <% end %>
-
-
-
-
 

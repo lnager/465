@@ -9,6 +9,7 @@ class ImagesController < ApplicationController
   def show
     #respond_with(@image)
     @tag = @image.tags.new
+    @users = User.all
   end
 
   def new
