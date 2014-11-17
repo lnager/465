@@ -7,7 +7,7 @@ margin: 25px;
 }
 #article {
 background-color:white;
-width: 55px;
+width: 100%;
 border: 25px solid navy;
 padding: 25px;
 margin: 25px;
@@ -25,9 +25,8 @@ background-color: grey;
 </style>
 
 
-
+<div>
 <h1>Social Image Network</h1>
-
 
 
 <% if current_user == nil %>  <!-- public view -->
@@ -38,17 +37,19 @@ background-color: grey;
   <h2>Public Images</h2>
   <table cellpadding="4" border ="1">
     <tbody>
+    <tr>
       <% @images.each do |image| %>
         <% if image.flag == "0" %>
-          <tr>
-          <td><a href="<%= image_path(image) %>"><%= image_tag image.filename, size: "400x400", alt: image.filename%></a></td>
-          </tr>
+          <td><a href="<%= image_path(image) %>"><%= image_tag image.filename, size: "200x200", alt: image.filename%></a></td>
         <% end %>
       <% end %>
+
+    </tr>
     </tbody>
   </table>
 
 <% else %> <!-- Logged in view -->
+
 <p>Displaying all public, owned, and accessible photos</p>
   
   <h3><font color="green"> + <%= link_to "Upload New Image", new_image_path %></font><h3>
@@ -87,13 +88,13 @@ background-color: grey;
   <table cellpadding="4" border ="1">
     <tbody>
      <tr>
-      <% for i in 0..@images.length-1 %>
+      <!-- % for i in 0..@images.length-1 % -->
       <% @images.each do |image| %>
         <% if current_user.id #== image.accessors[i].user_id %>
           <td><a href="<%= image_path(image) %>"><%= image_tag image.filename, size: "200x200", alt: image.filename%></a></td>
         <% end %>
       <% end %>
-      <% end %>
+      <!-- % end % -->
       </tr>
     </tbody>
   </table>
@@ -104,3 +105,4 @@ background-color: grey;
 <br>
 <br>
 <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
+</div>
