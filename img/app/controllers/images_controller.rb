@@ -6,7 +6,6 @@ class ImagesController < ApplicationController
     @user = User.all
 
     @accessors = Accessor.all
-
   end
 
   def show

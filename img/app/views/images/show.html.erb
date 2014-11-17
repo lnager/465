@@ -1,4 +1,33 @@
+<style>
+#body {
+background-color: white;
+width: 666px;
+padding: 25px;
+border: 25px solid navy;
+margin: 25px; 
+}
+#article {
+background-color:white;
+width: 355px; 
+border: 25px solid navy;
+padding: 25px;
+margin: 25px;
+}   
+    
+th {
+    text-align: left;
+}   
+    
+</style>
+<style>
+body {
+background-image: url("http://i.imgur.com/kLrAW0x.jpg");
+background-color: grey;
+}
+</style>
 
+
+<div>
 <% if !current_user %>
 
   <% if @image.flag == "1" %>
@@ -94,3 +123,4 @@
 
 <br>
 <%= link_to 'Back to Images', images_path %> | <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
+</div>
