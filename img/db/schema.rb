@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111054017) do
+ActiveRecord::Schema.define(version: 20141117034733) do
 
   create_table "accessors", force: true do |t|
-    t.integer  "user_id"
     t.integer  "image_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

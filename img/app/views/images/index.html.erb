@@ -23,6 +23,10 @@
 <% else %> <!-- Logged in view -->
 <p>Displaying all public, owned, and accessible photos</p>
 
+  
+  <h3><font color="green"> + <%= link_to "Upload New Image", new_image_path %></font><h3>
+  <br>
+  <br>
   <h2>Public Images</h2>
   <table cellpadding="4" border ="1">
     <tbody>
@@ -36,22 +40,14 @@
     </tbody>
   </table>
 
-<!--
+
   <h2>Accessible Images</h2>
   <table cellpadding="4" border ="1">
     <tbody>
       <tr>
-      <!--% @images.each do |image| %-->
-      <!-- for i in 0..@users.length-1 %--> 
-        <!--% if current_user.id == image.accessors[i].id %-->
-        <td><a href="<!--%= image_path(image) %-->"><!--%= image_tag image.filename, size: "200x200", alt: image.filename%--></a></td>
-        <!--% end %-->
-      <!--% end %-->
-      <!--% end %-->
       </tr>
     </tbody>
   </table>
--->
 
   <h2>My Images</h2>
   <table cellpadding="4" border ="1">

@@ -12,15 +12,20 @@
   <% end %>
 
   <div class="field", class="action">
-    <%= f.label :uploaded_file %><br>
+
     <%= f.file_field :uploaded_file %>
+<br>
+<br>
+    | <%= f.label :flag, "Public"%><%= f.radio_button :flag, "0" %> |
+    <%= f.label :flag, "Private" %><%= f.radio_button :flag, "1" %> | <font color="red">SET FLAG!</font>
+<br>
+<br>
+<br>
+<br>
+
     <%= f.submit %>
   </div>
 
-
-
-
-
-
+<br>
 <% end %>
 

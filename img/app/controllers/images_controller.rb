@@ -4,26 +4,30 @@ class ImagesController < ApplicationController
   def index
     @images = Image.all
     @user = User.all
+
+    @image = Image.new #for uploads
+    @accessors = Accessor.all
   end
 
   def show
     @tag = @image.tags.new
+    @accessor = @image.accessors.new
     @users = User.all
   end
 
   def new
     @image = Image.new
     @image.tags.new
+    @image.accessors.new
   end
 
   def edit
   end
 
   def create
-    #respond_with(@image)
     # POST /images
     @image = Image.new(image_params)
-    @image.generate_filename
+    @image.filename = @image.generate_filename
     @image.user = current_user
 
     @uploaded_io = params[:image][:uploaded_file]
@@ -33,7 +37,7 @@ class ImagesController < ApplicationController
     end
 
     if @image.save
-      redirect_to @image, notice: 'Image was successfully created.'
+      redirect_to root_path, notice: 'Image was successfully created.'
     else
       render :new
     end

@@ -31,7 +31,7 @@ background-color: #cccccc;
 
 
 <div id ="body">
-
+<font color="blue">
 <% if user_signed_in? %>
 Signed in as <%= current_user.email %>. Not you?
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
@@ -39,6 +39,7 @@ Signed in as <%= current_user.email %>. Not you?
 <%= link_to "Sign Up", new_user_registration_path %> or
 <%= link_to "Sign In", new_user_session_path %>
 <% end %>
+</font>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
