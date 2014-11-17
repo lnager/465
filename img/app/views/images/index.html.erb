@@ -41,7 +41,7 @@ background-color: grey;
       <% @images.each do |image| %>
         <% if image.flag == "0" %>
           <tr>
-          <td><a href="<%= image_path(image) %>"><%= image_tag image.filename, size: "666x666", alt: image.filename%></a></td>
+          <td><a href="<%= image_path(image) %>"><%= image_tag image.filename, size: "400x400", alt: image.filename%></a></td>
           </tr>
         <% end %>
       <% end %>
