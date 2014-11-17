@@ -5,8 +5,8 @@ class ImagesController < ApplicationController
     @images = Image.all
     @user = User.all
 
-    @image = Image.new #for uploads
     @accessors = Accessor.all
+
   end
 
   def show

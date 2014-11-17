@@ -21,8 +21,7 @@
 
   
   <% if @image.flag == "1" %>
-  <div class="field", class="actions">
-    <%= f.label :accessor %>
+  <%= link_to 'Show Accessors', image_accessors_path(@image) %>
   <% end %>
 
 <% end %>

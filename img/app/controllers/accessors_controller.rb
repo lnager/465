@@ -1,4 +1,5 @@
 class AccessorsController < ApplicationController
+  before_action :set_accessor, only: [:edit, :update, :destroy]
 
   def index
     @image = Image.find params[:image_id]
@@ -30,7 +31,7 @@ class AccessorsController < ApplicationController
   end
 
   def destroy
-    @acccessor.destroy
+    @accessor.destroy
     redirect_to image_accessors_url(@accessor.image) , notice: 'Accessor was successfully destroyed.'
   end
 
