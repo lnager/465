@@ -4,14 +4,15 @@ class ImagesController < ApplicationController
   def index
     @images = Image.all
     @user = User.all
-
     @accessors = Accessor.all
   end
-
+  
   def show
+    @images = Image.all
+    @users = User.all
+
     @tag = @image.tags.new
     @accessor = @image.accessors.new
-    @users = User.all
   end
 
   def new
@@ -62,6 +63,6 @@ class ImagesController < ApplicationController
     end
 
     def image_params
-      params.require(:image).permit(:filename, :flag, :user_id, tags_attributes: [:tag, :image_id])
+      params.require(:image).permit(:filename, :flag, :user_id, tags_attributes: [:tag, :image_id], accessors_attributes: [:image_id, :user_id])
     end
 end

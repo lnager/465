@@ -84,17 +84,17 @@ background-color: grey;
   </table>
   <br>
   <br>
-  <h2>Accessible Images <font color="red">*not displaying correctly*</font></h2>
+  <h2>Accessible Images</h2>
   <table cellpadding="4" border ="1">
     <tbody>
-     <tr>
-      <!-- % for i in 0..@images.length-1 % -->
+      <tr>
       <% @images.each do |image| %>
-        <% if current_user.id #== image.accessors[i].user_id %>
+      <% image.accessors.each do |accessor| %>
+        <% if accessor.user_id == current_user.id %>
           <td><a href="<%= image_path(image) %>"><%= image_tag image.filename, size: "200x200", alt: image.filename%></a></td>
         <% end %>
       <% end %>
-      <!-- % end % -->
+      <% end %>
       </tr>
     </tbody>
   </table>

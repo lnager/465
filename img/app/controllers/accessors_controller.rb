@@ -11,12 +11,12 @@ class AccessorsController < ApplicationController
     @accessor = @image.accessors.new
   end
 
-    def create
+  def create
     @image = Image.find params[:image_id]
     @accessor = @image.accessors.new(accessor_params)
 
     if @accessor.save
-      redirect_to image_accessors_url(@image) , notice: 'Accessor was successfully created.'
+      redirect_to image_url(@image) , notice: 'Accessor was successfully created.'
     else
       render :new
     end
@@ -24,7 +24,7 @@ class AccessorsController < ApplicationController
 
   def update
     if @accessor.update(accessor_params)
-      redirect_to image_accessors_url(@accessor.image), notice: 'Accessor was successfully updated.'
+      redirect_to image_url(@accessor.image), notice: 'Accessor was successfully updated.'
     else
       render :edit
     end
@@ -32,7 +32,7 @@ class AccessorsController < ApplicationController
 
   def destroy
     @accessor.destroy
-    redirect_to image_accessors_url(@accessor.image) , notice: 'Accessor was successfully destroyed.'
+    redirect_to image_url(@accessor.image) , notice: 'Accessor was successfully destroyed.'
   end
 
   private
