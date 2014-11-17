@@ -37,7 +37,7 @@
         {filename: 'x0shmi4emmio5fwe.jpg', flag: '1', user_id: users[1].id},
         {filename: 'vukpurcnbhr0r9nn.jpg', flag: '0', user_id: users[1].id},
         {filename: 'dlr97o99wc005b6w.jpg', flag: '0', user_id: users[1].id},
-        {filename: 'yru8vojblp2min12.jpg', flag: '0', user_id: users[1].id},
+        {filename: 'yru8vojblp2min12.jpg', flag: '1', user_id: users[1].id},
 
 
 
@@ -125,7 +125,7 @@
     {user_id: users[0].id, image_id: images[13].id },
     {user_id: users[0].id, image_id: images[14].id },
     {user_id: users[1].id, image_id: images[9].id },
-    {user_id: users[2].id, image_id: images[9].id },
+    {user_id: users[4].id, image_id: images[9].id },
     {user_id: users[3].id, image_id: images[0].id }
   ]
 )

@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
   def show
     @images = Image.all
     @users = User.all
-
+    @accessors = Accessor.all
     @tag = @image.tags.new
     @accessor = @image.accessors.new
   end

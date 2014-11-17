@@ -63,11 +63,6 @@ background-color: grey;
 
 <% if current_user %>
 
-  <% if current_user.id != @image.user_id && @image.flag == '1' %>
-    <br>
-    <p><font color="red">You do not have permission to view this photo.</font></p>
-    <br>
-  <% else %>
     <%= image_tag root_url + "/images/" + @image.filename, size: "400x400", alt: @image.filename %>
   
     <h2>Filename: <%= @image.filename %></h2>
@@ -77,32 +72,35 @@ background-color: grey;
     <% if @image.user_id == current_user.id %>
     <%= render 'form' %><br>
 
-    <h3><%= @image.filename %>'s Accessors </h3>
+      <% if @image.flag == "1" %>
+        <h3><%= @image.filename %>'s Accessors </h3>
 
-    <table border=1>
-      <thead>
-          <tr>
-            <th>User_ID</th>
-            <th colspan="2">Owner's Options</th>
-          </tr>
-      </thead>
+        <table border=1>
+          <thead>
+              <tr>
+                <th>User_ID</th>
+                <th colspan="2">Owner's Options</th>
+              </tr>
+          </thead>
 
-      <tbody>
-      <% @image.accessors.each do |accessor| %>
-      <% if !accessor.new_record? %>
-        <tr>
-          <td><%= accessor.user_id %></td>
-          <td><%= link_to 'Edit', edit_accessor_path(accessor) %></td>
-          <td><%= link_to 'Destroy', accessor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-      <% end %>
-      </tbody>
-    </table>
+          <tbody>
+          <% @image.accessors.each do |accessor| %>
+          <% if !accessor.new_record? %>
+            <tr>
+              <td><%= accessor.user_id %></td>
+              <td><%= link_to 'Edit', edit_accessor_path(accessor) %></td>
+              <td><%= link_to 'Destroy', accessor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+          <% end %>
+          </tbody>
+        </table>
 
 
-    <h3>Create New Accessor</h3>
-      <%= render 'accessors/form' %>
+        <h3>Create New Accessor</h3>
+          <%= render 'accessors/form' %>
+
+    <% end %>  
 
   <% end%>
   <br>
@@ -134,7 +132,7 @@ background-color: grey;
     </table>
 
     <br>
-    <% if @image.user_id == current_user.id %>
+    <% if @image.user_id == current_user.id  %>
     <h3>Create New Tag</h3>
     <%= render 'tags/form' %>
     <% end %>
@@ -145,7 +143,6 @@ background-color: grey;
 
 
 
-  <% end %>
 
 <% end %>
 
