@@ -1,0 +1,53 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: whitesmoke;
+    padding: 5px;
+    text-align: center;
+}
+th {
+  background-color: navy;
+}
+td {
+  background-color: whitesmoke;
+}
+</style>
+
+
+
+<table align="center">
+<tr><th colspan=2><h3><font color="white">Private Access for <%= @song.name %></font></h3></th></tr>
+    
+      <td><b>User_ID</b></td>
+      <td></td>
+
+  <tbody>
+    <% @accessors.each do |accessor| %>
+      <% if !accessor.new_record? %>
+      <tr>  
+        <td><%= accessor.user_id %></td>
+        <!-- td>< link_to 'Edit', edit_accessor_path(accessor) %></td -->
+        <td><%= link_to 'Destroy', accessor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+
+
+    <tr><td colspan=2><%= link_to 'New Accessor', new_song_accessor_path %> | <%= link_to "Back", @song %></td></tr>
+  </tbody>
+</table>
+
+<br>
+<br>
+
+<table align="center">
+<tr><td><ul>
+  <% @users.each do |user| %>
+    <li><%= user.id %> | <%= user.name %> | Registered On: <%= user.created_at %></li>
+  <% end %>
+</ul></td></tr>
+</table>
+
+
+

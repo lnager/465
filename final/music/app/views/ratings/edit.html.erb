@@ -1,0 +1,31 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: whitesmoke;
+  padding: 5px;
+  text-align: center;
+}
+th {
+  background-color: navy;
+}
+td {
+  background-color: whitesmoke;
+}
+</style>
+
+
+<br>
+<table width="45%" align="center">
+<tr><th><h3><font color="white">Editing Rating for <%= @rating.song.name %></font></h3></th></tr>
+<td>
+  <br>
+  <%= render 'form' %>
+  <br>
+  <%= link_to 'Back to Song', @rating.song %> | <%= link_to "All Songs", songs_path %>
+</td>
+</table>
+<br>
+
+
+

@@ -1,0 +1,212 @@
+<!-- INDEX PAGE -->
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: whitesmoke;
+    padding: 5px;
+    text-align: center;
+}
+th {
+  background-color: navy;
+}
+td {
+  background-color: whitesmoke;
+}
+</style>
+
+
+
+<% if current_user == nil %>
+
+<br>
+<br>
+<h1 align="center">Listing Songs</h1>
+<br>
+<table align="center">
+  <thead>
+   <tr><th colspan="5" style="font-size:110%"><font style="color: white">10 Most Recent Uploads</font></th></tr> 
+   <tr>
+      <td><b>Title</b></td>
+      <td><b>Artist</b></td>
+      <td><b>Album</b></td>
+      <td><b>Genre</b></td>
+      <td><b>Upload Date</b></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for i in 0..9 %>
+      <tr>
+
+        <% if @songs[@songs.length-1-i].flag == "0" %>
+          <td><%= image_tag @songs[@songs.length-1-i].artwork, size: "10x10", alt: @songs[@songs.length-1-i].artwork %> <%= link_to "#{@songs[@songs.length-1-i].name}", @songs[@songs.length-1-i] %></td>          
+        <% else %>
+          <td><%= image_tag @songs[@songs.length-1-i].artwork, size: "10x10", alt: @songs[@songs.length-1-i].artwork %> <%= @songs[@songs.length-1-i].name %></td>
+        <% end %>
+        <td><%= @songs[@songs.length-1-i].artist %></td>
+        <td><%= @songs[@songs.length-1-i].album %></td>
+        <td><%= @songs[@songs.length-1-i].genre %></td>
+        <td><%= @songs[@songs.length-1-i].created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+
+
+
+  <table align="center">
+    <thead>
+    <tr><th colspan="4" style="font-size:110%"><font style="color:white">Public Songs</font></th></tr>
+    <tr>
+       <td><b>Title</b></td>
+       <td><b>Artist</b></td>
+       <td><b>Album</b></td>
+       <td><b>Genre</b></td>
+    </tr>
+    </thead>
+
+    <tbody>
+      <% @songs.each do |song| %>
+      <% if song.flag == '0' %>
+        <tr>
+          <td><%= image_tag song.artwork, size: "10x10", alt: song.artwork %> <%= link_to "#{song.name}", song %></td>
+          <td><%= song.artist %></td>
+          <td><%= song.album %></td>
+          <td><%= song.genre %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
+
+
+<% else %>
+
+<font color="green"> + </font><%= link_to 'New Song', new_song_path %>
+<br>
+<br>
+<h1 align="center">Listing Songs</h1>
+<br>
+<table align="center">
+  <thead>
+    <tr><th colspan="5" style="font-size:110%"><font style="color:white">10 Most Recent Uploads</font></th></tr>
+    <tr>
+      <td><b>Title</b></td>
+      <td><b>Artist</b></td>
+      <td><b>Album</b></td>
+      <td><b>Genre</b></td>
+      <td><b>Upload Date</b></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% for i in 0..9 %>
+      <tr>
+        <% if @songs[@songs.length-1-i].flag == "0" || @songs[@songs.length-1-i].user_id == current_user.id %>
+          <td><%= image_tag @songs[@songs.length-1-i].artwork, size: "10x10", alt: @songs[@songs.length-1-i].artwork %> <%= link_to "#{@songs[@songs.length-1-i].name}", @songs[@songs.length-1-i] %></td>
+        <% else %>
+          <td><%= image_tag @songs[@songs.length-1-i].artwork, size: "10x10", alt: @songs[@songs.length-1-i].artwork %> <%= @songs[@songs.length-1-i].name %></td>
+        <% end %>
+
+        <td><%= @songs[@songs.length-1-i].artist %></td>
+        <td><%= @songs[@songs.length-1-i].album %></td>
+        <td><%= @songs[@songs.length-1-i].genre %></td>
+        <td><%= @songs[@songs.length-1-i].created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+
+<table align="center">
+  <thead>
+    <tr><th colspan="5" style="font-size:110%"><font style="color:white">My Songs</font></th></tr>
+    <tr>
+      <td><b>Title</b></td>
+      <td><b>Artist</b></td>
+      <td><b>Album</b></td>
+      <td><b>Genre</b></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+    <% if song.user_id == current_user.id %>
+      <tr>
+        <td><%= image_tag song.artwork, size: "10x10", alt: song.artwork %> <%= link_to "#{song.name}", song %></td>
+        <td><%= song.artist %></td>
+        <td><%= song.album %></td>
+        <td><%= song.genre %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+
+  <table align="center">
+      <tr><th colspan=4><h3><font color="white">Accessible Songs</font></h3></th></tr>
+      <tr>
+         <td><b>Title</b></td>
+         <td><b>Artist</b></td>
+         <td><b>Album</b></td>
+         <td><b>Genre</b></td>
+      </tr>
+      <% @songs.each do |song| %>
+      <% song.accessors.each do |accessor| %>
+        <tr>
+        <% if accessor.user_id == current_user.id %>
+          <td><%= image_tag song.artwork, size: "10x10", alt: song.artwork %> <%= link_to "#{song.name}", song %></td>
+          <td><%= song.artist %></td>
+          <td><%= song.album %></td>
+          <td><%= song.genre %></td>
+        <% end %>
+        </tr>
+      <% end %>
+      <% end %>
+      </tr>
+  </table>
+
+<br>
+<br>
+<table align="center">
+  <thead>
+    <tr><th colspan="4" style="font-size:110%"><font style="color:white">Public Songs</font></th></tr>
+    <tr>
+      <td><b>Title</b></td>
+      <td><b>Artist</b></td>
+      <td><b>Album</b></td>
+      <td><b>Genre</b></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <% if song.flag == '0' %>
+        <tr>
+          <td><%= image_tag song.artwork, size: "10x10", alt: song.artwork %> <%= link_to "#{song.name}", song %></td>
+          <td><%= song.artist %></td>
+          <td><%= song.album %></td>
+          <td><%= song.genre %></td>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<br>
+
+
+
+
+<font color="green"> + </font><%= link_to 'New Song', new_song_path %>
+<br>
+<a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
+<% end %>

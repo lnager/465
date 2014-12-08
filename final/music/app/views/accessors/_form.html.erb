@@ -1,0 +1,24 @@
+<%= form_for([@song, @accessor]) do |f| %>
+  <% if @accessor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@accessor.errors.count, "error") %> prohibited this access from being saved:</h2>
+
+      <ul>
+      <% @accessor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<br>
+<div class="field", class="actions">
+  User_ID: <%= f.text_field :user_id %><br>
+  <br>
+  <%= f.submit "New Accessor" %>
+</div>
+<br>
+<br>
+
+<% end %>
+           

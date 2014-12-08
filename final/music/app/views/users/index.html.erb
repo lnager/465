@@ -1,0 +1,9 @@
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.name %> | Registered On: <%= user.created_at %></li>
+  <% end %>
+</ul>
+
+<br>
+<br>
+<%= link_to 'Back to Songs', songs_path %>

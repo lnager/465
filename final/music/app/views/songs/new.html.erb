@@ -1,0 +1,30 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: whitesmoke;
+  padding: 5px;
+  text-align: center;
+}
+th { 
+  background-color: navy;
+}
+td {
+  background-color: whitesmoke;
+}
+</style>
+
+
+
+<br>
+<table align="center">
+<tr><th><h1><font color="white">New Song</font></h1></th></tr>
+<td>
+  <br>
+  <%= render 'form' %>
+  <br>
+  <%= link_to 'All Songs', songs_path %>
+</td>
+</table>
+<br>
+

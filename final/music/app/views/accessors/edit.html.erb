@@ -1,0 +1,25 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: whitesmoke;
+    padding: 5px;
+    text-align: center;
+}
+th {
+  background-color: navy;
+}
+td {
+  background-color: whitesmoke;
+}
+</style>
+
+
+
+<table align="center">
+<tr><th colspan=2><h3><font color="white">Edit Access for <%= @accessor.song.name %></font></h3></th></tr>
+
+<td><%= render 'form' %></td>
+<tr><td><%= link_to 'Back', song_accessors_path(@accessor.song) %></td></tr>
+</table>
+~                                                                 
