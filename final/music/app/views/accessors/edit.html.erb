@@ -22,4 +22,16 @@ td {
 <td><%= render 'form' %></td>
 <tr><td><%= link_to 'Back', song_accessors_path(@accessor.song) %></td></tr>
 </table>
+
+
+<br>
+<br>
+
+<table align="center">
+<tr><td><ul>
+  <% @users.each do |user| %>
+    <li><%= user.id %> | <%= user.name %> | Registered On: <%= user.created_at %></li>
+  <% end %>
+</ul></td></tr>
+</table>
 ~                                                                 

@@ -1,5 +1,22 @@
-<h2>Resend confirmation instructions</h2>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: whitesmoke;
+    padding: 5px;
+    text-align: center;
+}
+th {
+  background-color: navy;
+}
+td {
+  background-color: whitesmoke;
+}
+</style>
 
+
+<table width="25%" align="center"><tr><th><h3><font color="white">Resend confirmation instructions</font></h3></th></tr>
+<tr><td>
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
@@ -10,3 +27,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</td></tr></table>

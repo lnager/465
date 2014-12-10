@@ -5,6 +5,7 @@ class SongsController < ApplicationController
   # GET /songs.json
   def index
     @songs = Song.all
+    @accessors = Accessor.all
   end
   
   # GET /songs/1
@@ -12,12 +13,12 @@ class SongsController < ApplicationController
   def show
     @songs = Song.all
     @users = User.all
+    @accessors = @song.accessors
+
     @accessor = @song.accessors.new
     @rating = @song.ratings.new
-
-      #@downloadsong = send_file(@song.download_song)
-      #@downloadart = send_file(@song.download_art)
-
+    #@downloadsong = send_file(@song.download_song)
+    #@downloadart = send_file(@song.download_art)
 
   end
 

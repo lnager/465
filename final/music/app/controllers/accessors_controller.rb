@@ -15,6 +15,7 @@ class AccessorsController < ApplicationController
 
   def new
     @song = Song.find params[:song_id]
+    @users = User.all
     @accessor = @song.accessors.new
   end
 
@@ -39,7 +40,7 @@ class AccessorsController < ApplicationController
 
   def destroy
     @accessor.destroy
-    redirect_to song_acccessors_url(@accessor.song) , notice: 'Accessor was successfully destroyed.'
+    redirect_to song_accessors_url(@accessor.song), notice: 'Accessor was successfully destroyed.'
   end
 
 

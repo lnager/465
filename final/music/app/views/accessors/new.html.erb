@@ -24,4 +24,15 @@ td {
 </table>
 
 
+<br>
+<br>
+
+<table align="center">
+<tr><td><ul>
+  <% @users.each do |user| %>
+    <li><%= user.id %> | <%= user.name %> | Registered On: <%= user.created_at %></li>
+  <% end %>
+</ul></td></tr>
+</table>
+
 

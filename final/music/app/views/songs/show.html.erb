@@ -22,25 +22,30 @@ td {
 
   <% if @song.flag == "1" %><!-- PROTECT PRIVATE IMAGES -->
     <br>
+    <table align="center" width="45%"><tr><td><br><br><b>You do not gave permission to view this page.</b><br><br><br></td></tr>
     <br>
-    <p>
-      <font color:"red"><b>You do not gave permission to view this page.</b> </font>
-   </p>
-   <br>
-    <% if @song.name != @songs[0].name %>
-      <%= link_to 'Previous Song', song_path(@song) %> |
-    <% else %>
-      First Song |
-    <% end %>
+    <tr>
+    <td>
+      <% if @song.name != @songs[0].name %>
+        <%= link_to 'Previous Song', @songs[@song.id-2] %> |
+      <% else %>
+        First Song |
+      <% end %>
 
-    <%= link_to 'All Songs', songs_path %>
+      <%= link_to 'All Songs', songs_path %>
 
-    <% if @song.name != @songs[@songs.length-1].name %>
-      | <%= link_to 'Next Song', song_path(@song) %><br>
-    <% else %>
-      | Last Song <br>
-    <% end %> 
-  <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
+      <% if @song.name != @songs[@songs.length-1].name %>
+        | <%= link_to 'Next Song', @songs[@song.id] %>
+      <% else %>
+        | Last Song
+      <% end %>
+    </td>
+    </tr>
+    <br>
+    <br>
+    <tr><td><a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a></td></tr></table>
+
+
 
 
   <% else %><!-- NORMAL PUBLIC VIEW -->
@@ -61,11 +66,11 @@ td {
     <br>
 
     <p>
-      <font color="green"><%= link_to "download song", songs_path %></font>
+      <font color="green"><%= link_to "download song", songs_path, :target => "_blank" %></font>
     </p>
 
     <p>
-      <font color="green"><%= link_to "download_art", songs_path  %></font>
+      <font color="green"><%= link_to "download_art", songs_path, :target => "_blank"  %></font>
     </p>
 
     <p> 
@@ -89,7 +94,7 @@ td {
     </p>
 
     <% if @song.name != @songs[0].name %>
-      <%= link_to 'Previous Song', song_path(@song) %> |
+      <%= link_to 'Previous Song', @songs[@song.id-2] %> |
     <% else %>
       First Song |
     <% end %>
@@ -97,14 +102,12 @@ td {
     <%= link_to 'All Songs', songs_path %> 
 
     <% if @song.name != @songs[@songs.length-1].name %>
-      | <%= link_to 'Next Song', song_path(@song) %><br>
+      | <%= link_to 'Next Song', @songs[@song.id] %><br>
     <% else %>
       | Last Song <br>
     <% end %>
     <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
     </td>
-      <!-- strong>Average Rating:</strong -->
-      <!-- @song.ratings.average -->
     
     </table>
     <br>
@@ -139,126 +142,166 @@ td {
   <% end %>
 
 
+
+
+
+
 <% else %> <!-- LOGGED IN -->
-
-  <table align="center"><tr><th><h2><font color="white"><%= @song.name %></font></h2></th></tr>
-  <td>
-
-    <%= image_tag root_url + "/images/" + @song.artwork, size: "400x400", alt: @song.artwork %>
-    <br>
-    <%= audio_tag("#{@song.filename}", autoplay: true, controls: true) %>
-    <br>
-
-
-    <% if @song.user_id == current_user.id %>
-      <font color='blue'>Owner: </font> You | <font color="blue">Options: </font>
-      <%= link_to 'Edit', edit_song_path(@song) %>
-      <%= link_to 'Destroy', @song, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% else %>
-      <font color='blue'>Owner: </font><%= @users[@song.user_id-1].name %>
+   
+  <% special_access = 0 %>
+  <% @song.accessors.each do |accessor| %>
+    <% if accessor.user_id == current_user.id %>
+      <% special_access = 1 %>
+      <% break %>
     <% end %>
-    <br>
+  <% end %> 
 
-  
-    <% if @song.flag == '0' %>
-      <font color="green">Public</font>
-    <% elsif @song.flag == '1' %>
-      <font color="red">Private</font>
+  <% if @song.flag == '1' && current_user.id != @song.user_id && special_access == 0 %>
+    <br> 
+    <table align="center" width="45%"><tr><td><br><br><b>You do not gave permission to view this page.</b><br><br><br></td></tr>
+    <br>
+    <tr>
+    <td>
+      <% if @song.name != @songs[0].name %>
+        <%= link_to 'Previous Song', @songs[@song.id-2] %> |
+      <% else %>
+        First Song |
+      <% end %>
+
+      <%= link_to 'All Songs', songs_path %>
+
+      <% if @song.name != @songs[@songs.length-1].name %>
+        | <%= link_to 'Next Song', @songs[@song.id] %>
+      <% else %>
+        | Last Song
+      <% end %>
+    </td>
+    </tr>
+    <br>
+    <br>
+    <tr><td><a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a></td></tr></table>
+
+
+  <% else %>
+  <!-- normal logged in view --> 
+    <table align="center"><tr><th><h2><font color="white"><%= @song.name %></font></h2></th></tr>
+    <td>
+
+      <%= image_tag root_url + "/images/" + @song.artwork, size: "400x400", alt: @song.artwork %>
+      <br>
+      <%= audio_tag("#{@song.filename}", autoplay: true, controls: true) %>
+      <br>
+
 
       <% if @song.user_id == current_user.id %>
+        <font color='blue'>Owner: </font> You | <font color="blue">Options: </font>
+        <%= link_to 'Edit', edit_song_path(@song) %>
+        <%= link_to 'Destroy', @song, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% else %>
+        <font color='blue'>Owner: </font><%= @users[@song.user_id-1].name %>
+      <% end %>
+      <br>
+
+  
+      <% if @song.flag == '0' %>
+        <font color="green">Public</font>
+      <% elsif @song.flag == '1' %>
+        <font color="red">Private</font>
+      <% end %>
+
+      <% if @song.user_id == current_user.id && @song.flag =='1' %>
         <%= link_to "(Special Access)", song_accessors_path(@song) %>
       <% end %>
 
-    <% else %>
-      <font color="yellow">Flag is fucked up:<%= @song.flag %></font>
-    <% end %>
+      <br>
+
+
+      <p>
+        <font color="green"><%= link_to "download song", songs_path, :target => "_blank" %></font>
+      </p>
+
+      <p>
+        <font color="green"><%= link_to "download art", songs_path, :target => "_blank" %></font> 
+      </p>
+
+      <p>
+        <strong>Song:</strong>
+        <%= @song.name %>
+      </p>
+
+      <p>
+        <strong>Artist:</strong>
+        <%= @song.artist %>
+      </p>
+
+      <p>
+        <strong>Album:</strong>
+        <%= @song.album %>
+      </p>
+
+      <p>
+        <strong>Genre:</strong>
+        <%= @song.genre %>
+      </p>
+
+
+     <% if @song.name != @songs[0].name %>
+       <%= link_to 'Previous Song', @songs[@song.id-2] %> | 
+     <% else %>
+       First Song |
+     <% end %>
+
+     <%= link_to 'All Songs', songs_path %> 
+
+     <% if @song.name != @songs[@songs.length-1].name %>
+       | <%= link_to 'Next Song', @songs[@song.id] %><br>
+     <% else %>
+       | Last Song <br>
+     <% end %>  
+
+     <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
+
+    </td>
+    </table>
+    <br>
+  
+    <table width="35%" align="center"><tr><td><%= render 'ratings/form' %></td></tr></table>
+
+    <br>
+    <table align="center">
+      <thead>
+        <tr>
+          <th><font color="white">User</font></th>
+          <th><font color="white">Comment</font></th>
+          <th><font color="white">Rating</font></th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @song.ratings.reverse_each do |rating| %>
+          <% if !rating.new_record? %>
+          <tr>
+            <td><%= @users[rating.user_id-1].name %></td>
+            <td><%= rating.comment %></td>
+            <td><%= rating.rating %></td>
+            <td><%= rating.updated_at %></td>
+            <% if rating.user_id == current_user.id %>
+              <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
+              <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% else %>
+              <td colspan=2> </td>
+            <% end %>    
+          </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <%= link_to 'All Songs', songs_path %> |
+    <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
     <br>
 
-
-    <p>
-      <font color="green"><%= link_to "download song", songs_path  %></font>
-    </p>
-
-    <p>
-      <font color="green"><%= link_to "download art", songs_path %></font> 
-    </p>
-
-    <p>
-      <strong>Song:</strong>
-      <%= @song.name %>
-    </p>
-
-    <p>
-      <strong>Artist:</strong>
-      <%= @song.artist %>
-    </p>
-
-    <p>
-      <strong>Album:</strong>
-      <%= @song.album %>
-    </p>
-
-    <p>
-      <strong>Genre:</strong>
-      <%= @song.genre %>
-    </p>
-
-   <% if @song.name != @songs[0].name %>
-     <%= link_to 'Previous Song', @song %> | 
-   <% else %>
-     First Song |
-   <% end %>
-
-   <%= link_to 'All Songs', songs_path %> 
-
-   <% if @song.name != @songs[@songs.length-1].name %>
-     | <%= link_to 'Next Song', @song %><br>
-   <% else %>
-     | Last Song <br>
-   <% end %>  
-
-    <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
-
-  </td>
-  </table>
-  <br>
-  
-  <table width="35%" align="center"><tr><td><%= render 'ratings/form' %></td></tr></table>
-
-  <br>
-  <table align="center">
-    <thead>
-      <tr>
-        <th><font color="white">User</font></th>
-        <th><font color="white">Comment</font></th>
-        <th><font color="white">Rating</font></th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @song.ratings.reverse_each do |rating| %>
-        <% if !rating.new_record? %>
-        <tr>
-          <td><%= @users[rating.user_id-1].name %></td>
-          <td><%= rating.comment %></td>
-          <td><%= rating.rating %></td>
-          <td><%= rating.updated_at %></td>
-          <% if rating.user_id == current_user.id %>
-            <td><%= link_to 'Edit', edit_rating_path(rating) %></td>
-            <td><%= link_to 'Destroy', rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% else %>
-            <td colspan=2> </td>
-          <% end %>    
-        </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
-  <%= link_to 'All Songs', songs_path %> |
-  <a href="http://ec2-54-68-223-204.us-west-2.compute.amazonaws.com/">AWS Home Page</a>
-  <br>
-
+  <% end %>
 
 <% end %>

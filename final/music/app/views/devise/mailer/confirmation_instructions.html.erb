@@ -1,5 +1,23 @@
-<p>Welcome <%= @email %>!</p>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: whitesmoke;
+    padding: 5px;
+    text-align: center;
+}
+th {
+  background-color: navy;
+}
+td {
+  background-color: whitesmoke;
+}
+</style>
 
-<p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<table width="25%" align="center"><tr><th><h3><font color="white">Welcome <%= @email %>!</font></h3></th></tr>
+<tr><td>
+<b>You can confirm your account email through the link below:</b><br>
+<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+</td></tr></table>
+
