@@ -210,8 +210,12 @@ td {
       <% end %>
 
       <% if @song.user_id == current_user.id && @song.flag =='1' %>
-        <%= link_to "(Special Access)", song_accessors_path(@song) %>
+        | <%= link_to "Special Access", song_accessors_path(@song) %>
+      <% elsif special_access == 1 %>
+        | <font color="green">Special Access Granted</font>
       <% end %>
+
+      
 
       <br>
 
