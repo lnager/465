@@ -4,8 +4,13 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def edit
-   
+
+  def show
+    send_file(Rails.root.join('public', 'audios', @song.filename))
+    send_file(Rails.root.join('public', 'images', @song.artwork))
+  end 
+
+  def edit   
   end
 
 

@@ -1,5 +1,5 @@
 class SongsController < ApplicationController
-  before_action :set_song, only: [:show, :edit, :update, :destroy]
+  before_action :set_song, only: [:show, :edit, :update, :destroy, :downloadart, :download]
 
   # GET /songs
   # GET /songs.json
@@ -13,14 +13,15 @@ class SongsController < ApplicationController
   def show
     @songs = Song.all
     @users = User.all
-    @accessors = @song.accessors
 
-    @accessor = @song.accessors.new
+    @user = @song.user
     @rating = @song.ratings.new
-    #@downloadsong = send_file(@song.download_song)
-    #@downloadart = send_file(@song.download_art)
 
+    #@download_song = send_file(@song.download_song)
+    #@download_art = send_file(@song.download_art)
   end
+
+
 
   # GET /songs/new
   def new
@@ -89,6 +90,16 @@ class SongsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  # GET /songs/1/downloadart
+  def downloadart
+    send_file(Rails.root.join('public', 'images', @song.artwork))
+  end
+
+  # GET /songs/1/download
+  def download
+    send_file(Rails.root.join('public', 'audios', @song.filename))
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

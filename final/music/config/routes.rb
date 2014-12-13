@@ -9,6 +9,13 @@ Rails.application.routes.draw do
 
   root 'songs#index'
 
+  get 'songs/:id/downloadart', to: 'songs#downloadart', as: 'downloadart'
+  get 'songs/:id/download', to: 'songs#download', as: 'download'
+
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
