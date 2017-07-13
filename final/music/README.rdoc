@@ -1,28 +1,7 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Simple music sharing web application.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Additional ideas:  search and sort feature, membership payment, and GEMS (unlimited scroll) to prevent loading of ALL files simultaneously.
+
+
+Devise and json need to be updated to work with Ruby 2.4.x.
